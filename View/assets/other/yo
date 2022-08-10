@@ -1,0 +1,21 @@
+                <?php
+                  if(isset($_POST['button'])){
+                     session_start();
+                    $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
+                    $request_1=$database->query("select * from article where id_article='".$_SESSION["id_article"]."'");
+                    $art=$request_1->fetch();
+                    $_SESSION["titre"]=$art["titre"];
+                    $_SESSION["soustitre"]=$art["soustitre"];
+                    $_SESSION["date"]=$art["date_article"];
+                    echo('
+                        <div class="post-preview">
+                        <a href="#" style="font-family: Amaranth, sans-serif;" class="post-preview">
+                        <h2 class="post-title">'.$_SESSION["titre"].'</h2>
+                        <h3 class="post-subtitle">'.$request_1["soustitre"].'</h3>
+                        </a>
+                        <p class="post-meta">Posted by&nbsp;<a href="#">Start Bootstrap on '.$_SESSION["date"].'</a></p>
+                    </div>
+                    <hr>
+                    ');
+                  } 
+                ?>

@@ -1,0 +1,132 @@
+.register-photo {
+  background: #ffffff;
+  padding: 80px 0;
+}
+
+.register-photo .image-holder {
+  display: table-cell;
+  width: auto;
+  background: url("../../assets/img/1000_F_282574055_FozLwvi5JMLOFmDzAiVL9xDqMycu0gT6.jpg");
+  background-size: cover;
+}
+
+.register-photo .form-container {
+  display: table;
+  max-width: 900px;
+  border-radius: 20px;
+  width: 50%;
+  margin: 0 auto;
+}
+.form-container:hover{
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.93);
+}
+
+.register-photo form {
+  display: table-cell;
+  font-weight: bold;
+  width: 400px;
+  background-color: #ffffff;
+  padding: 40px 60px;
+  color: #ff0000;
+}
+
+@media (max-width:991px) {
+  .register-photo form {
+    padding: 40px;
+  }
+}
+
+.register-photo form h2 {
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.register-photo form .form-control {
+  background: #f7f9fc;
+  border: none;
+  border-bottom: 1px solid #dfe7f1;
+  border-radius: 10px;
+  box-shadow: none;
+  outline: none;
+  color: inherit;
+  text-indent: 6px;
+  height: 40px;
+}
+
+.register-photo form .form-check {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.register-photo form .btn-primary {
+  background: #ff0035;
+  border: none;
+  border-radius: 20px;
+  padding: 11px;
+  box-shadow: none;
+  margin-top: 35px;
+  text-shadow: none;
+  outline: none !important;
+}
+
+.register-photo form .btn-primary:hover, .register-photo form .btn-primary:active {
+  background: #d04663;
+}
+
+.register-photo form .btn-primary:active {
+  transform: translateY(1px);
+}
+
+.register-photo form .already {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #6f7a85;
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+#login {
+  border-radius: 10px;
+  height: 400px;
+  width: 10%;
+  border: 3px solid #ff0505;
+}
+
+#subscribe {
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.93);
+}
+
+#me {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  display: flex;
+  margin: auto;
+}
+
+@media (min-width: 1200px) {
+  #yosh {
+    width: 200px;
+    margin-left: 35%;
+  }
+}
+
+@media (min-width: 992px) {
+  #yosh {
+    width: 200px;
+    margin-left: 15%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #yosh1 {
+    margin-left: 20%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(83, 79, 79);
+  }
+}
+
+
+
