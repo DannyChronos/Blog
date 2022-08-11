@@ -1,0 +1,6 @@
+<?php
+    function post($id){
+        $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
+        $affichage=$database->query("select * from article,users where id_article='".$id."'");
+        $_SESSION["recup1"]=$affichage->fetch();
+    }

@@ -1,0 +1,40 @@
+<?php
+
+session_start();    
+//var_dump($_SESSION['tab']);
+if(isset($_POST['button']))
+{
+$user_id=$_SESSION["identify"];
+$titre=$_POST['title'] ;
+$soustitre=$_POST['subtitle'];
+$contenu=$_POST['body'] ;
+$image=$_FILES["img"]["tmp_name"];
+$nomimage=$_FILES["img"]["name"];
+$date=date('d-M-y h:i:s');
+
+require_once ('../Model/homeModel');
+home($titre,$soustitre,$contenu,$nomimage,$date,$user_id);
+$tabExtension = explode('.', $nomimage);
+
+$extension = strtolower(end($tabExtension));
+
+//Tableau des extensions que l'on accepte
+$extensions = ['jpg', 'jpeg', 'png','gif'];
+
+if(in_array($extension, $extensions)){
+    
+     move_uploaded_file($image,"./upload/".$nomimage);
+    
+}
+else{
+    echo "Mauvaise extension";
+}
+require_once ('../Model/redirect');
+redirect($titre,$soustitre);
+$article=$_SESSION['recup2'];
+    if($article){
+    $_SESSION["id_article"]=$article["id_article"];
+    }
+}
+
+require_once('../View/acceuil.php');

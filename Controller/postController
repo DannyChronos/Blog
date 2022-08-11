@@ -1,0 +1,14 @@
+<?php
+    session_start();
+    require_once("../Model/postModel");
+    post($_SESSION["id_article"]);
+    $article=$_SESSION["recup1"];
+    if($article){
+    $_SESSION["image"]=$article["image"];
+    $_SESSION["nom_image"]=$article["nom_image"];
+    $_SESSION["titre"]=$article["titre"];
+    $_SESSION["soustitre"]=$article["soustitre"];
+    $_SESSION["contenu"]=$article["contenu"];
+    $_SESSION["date"]=$article["date_article"];
+    } 
+

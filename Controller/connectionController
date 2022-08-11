@@ -1,0 +1,29 @@
+<?php
+  function filter($word){
+        return htmlentities(htmlspecialchars($word));
+    }
+    if(isset ($_POST['btn'])){
+        $email=filter($_POST["email"]);
+        $password=filter($_POST['password']);
+
+        require_once("../Model/connectionModel");
+        login($email);
+        $user=$_SESSION["recup"];
+        if($user){
+            $hashed_password=$user['password'];
+            if(password_verify($password,$hashed_password)){
+                session_start();
+                $_SESSION["user"]=$user["nom"].' '.$user["prenom"];
+                $_SESSION["identify"]=$user["id"];
+                header("location:/home");
+            }else{
+                echo("Mot de passe incorrect!! :(");
+            }
+        }else{
+            echo("Désolé! Vous n'avez pas de compte. Veuillez vous inscrire");
+        }
+        //var_dump($user);
+        //die();       
+    }
+
+    require_once('../View/login.php');

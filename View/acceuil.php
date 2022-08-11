@@ -1,59 +1,3 @@
-<?php
-        
-        
-        session_start();
-        $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
-
-        $request_2=$database->query("select id_article from article where titre='".$_SESSION['title']."'and soustitre='".$_SESSION['subtitle']."'");
-        $arti=$request_2->fetch();
-        if($arti){
-            if(isset($_POST['bouton1'])){
-            header("location:./post.php");
-            }
-        
-        }
- ?>
-<?php
-session_start();    
-//var_dump($_SESSION['tab']);
-if(isset($_POST['button']))
-{
-$user_id=$_SESSION["identify"];
-$titre=$_POST['title'] ;
-$soustitre=$_POST['subtitle'];
-$contenu=$_POST['body'] ;
-$image=$_FILES["img"]["tmp_name"];
-$nomimage=$_FILES["img"]["name"];
-$date=date('d-M-y h:i:s');
-
-$database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
-$request=$database->prepare("insert into article(titre,soustitre,contenu,nom_image,date_article,id) values(?,?,?,?,?,?)");
-
-$request->execute([$titre,$soustitre,$contenu,$nomimage,$date,$user_id]);
-
-$tabExtension = explode('.', $nomimage);
-
-$extension = strtolower(end($tabExtension));
-
-//Tableau des extensions que l'on accepte
-$extensions = ['jpg', 'jpeg', 'png','gif'];
-
-if(in_array($extension, $extensions)){
-    
-     move_uploaded_file($image,"./upload/".$nomimage);
-    
-}
-else{
-    echo "Mauvaise extension";
-}
-$request_0=$database->query("select id_article from article where titre='".$titre."'and soustitre='".$soustitre."'");
-$article=$request_0->fetch();
-if($article){
-$_SESSION["id_article"]=$article["id_article"];
-//header("location:./post.php");
-}
-}
-?>
 <!DOCTYPE html>
 <html>
 
@@ -91,8 +35,6 @@ $_SESSION["id_article"]=$article["id_article"];
         <div class="row">
             <div class="col-md-10 col-lg-8">    
                 <?php
-                $count=0;
-                $tab=[];
                   if(isset($_POST['button'])){
                      session_start();
                     $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");

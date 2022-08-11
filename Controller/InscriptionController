@@ -1,0 +1,31 @@
+<?php
+
+function filter(string $word)
+{
+   return htmlentities(htmlspecialchars($word));
+}
+
+if(isset($_POST['btn']))
+{
+
+$nom=filter($_POST['firstname']);
+$prenom =filter($_POST['lastname']);
+$email =filter($_POST['email']);
+$password =filter($_POST['password']);
+$password_conf = filter($_POST['password-repeat']);
+
+if($password==$password_conf)
+{
+$hash = password_hash($password,PASSWORD_DEFAULT);
+require_once("../Model/inscriptionModel.php");
+subscribe($nom,$prenom,$email,$hash);
+header('location:/login');
+
+}
+else 
+{
+    echo'Mot de passe invalide';
+}
+}
+
+require_once("../View/subscribe.php");

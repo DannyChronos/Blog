@@ -1,0 +1,6 @@
+<?php
+    function redirect($a,$b){
+        $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
+        $request_0=$database->query("select id_article from article where titre='".$a."'and soustitre='".$b."'");
+    $_SESSION["recup2"]=$request_0->fetch();
+}

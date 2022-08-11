@@ -1,32 +1,4 @@
-<?php
-    function filter($word){
-        return htmlentities(htmlspecialchars($word));
-    }
-    if(isset ($_POST['btn'])){
-        $email=filter($_POST["email"]);
-        $password=filter($_POST['password']);
-
-        $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
-        $request=$database->query("select * from users where email='".$email."'");
-        
-        $user=$request->fetch();
-        if($user){
-            $hashed_password=$user['password'];
-            if(password_verify($password,$hashed_password)){
-                session_start();
-                $_SESSION["user"]=$user["nom"].' '.$user["prenom"];
-                $_SESSION["identify"]=$user["id"];
-                header("location:./acceuil.php");
-            }else{
-                echo("Mot de passe incorrect!! :(");
-            }
-        }else{
-            echo("Désolé! Vous n'avez pas de compte. Veuillez vous inscrire");
-        }
-        //var_dump($user);
-        //die();       
-    }
-?>
+ 
 
 <!DOCTYPE html>
 <html>

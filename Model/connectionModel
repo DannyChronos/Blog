@@ -1,0 +1,7 @@
+<?php
+function login($email){
+            $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
+        $request=$database->query("select * from users where email='".$email."'");
+        
+        $_SESSION['recup']=$request->fetch();
+}

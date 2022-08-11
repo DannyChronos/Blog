@@ -1,0 +1,7 @@
+<?php
+function home($titre,$soustitre,$contenu,$nomimage,$date,$user_id){
+    $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
+$request=$database->prepare("insert into article(titre,soustitre,contenu,nom_image,date_article,id) values(?,?,?,?,?,?)");
+
+$request->execute([$titre,$soustitre,$contenu,$nomimage,$date,$user_id]);
+}
