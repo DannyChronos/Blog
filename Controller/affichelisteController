@@ -1,0 +1,25 @@
+<?php
+                  if(isset($_POST['button'])||!isset($_POST['button'])){
+                    require_once("../Model/homeModel");
+                    affiche($_SESSION['identify']);
+                    while($art=$_SESSION["recieve"]->fetch()) {
+                        $_SESSION['title']=$art["titre"];
+                        $_SESSION['subtitle']=$art['soustitre'];
+                ?>
+                    <div class="post-preview" style="font-family: Lora, sans-serif;">
+                        <h2 class="post-title"><?=($art["titre"])?></h2>
+                        <h4 class="post-subtitle"><?=($art["soustitre"])?></h4>
+                    <p class="post-meta">Posted by <?= $_SESSION['user']?> ;Start on <?=($art["date_article"])?></p>
+                </div>
+                <form action="" method="post">
+                 <div class="btn-group" role="group" style="width: 200px;">
+                    <button class="btn btn-primary buton1" type="submit" style="background-color: blue;height:50px;" name="bouton1">Voir+</button>
+                    <button class="btn btn-primary buton1" type="submit" style="margin-left: 10%;background-color: green;height:50px;" name="bouton2">Modifier</button>
+                    <button class="btn btn-primary buton1" type="submit" style="margin-left: 10%;background-color: red;height:50px;" name="bouton3">Supprimer</button>
+                </div>
+                </form>
+                <hr>
+                <?php 
+                }
+                }
+                ?>

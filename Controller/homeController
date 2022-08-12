@@ -1,7 +1,5 @@
 <?php
 
-session_start();    
-//var_dump($_SESSION['tab']);
 if(isset($_POST['button']))
 {
 $user_id=$_SESSION["identify"];
@@ -36,5 +34,14 @@ $article=$_SESSION['recup2'];
     $_SESSION["id_article"]=$article["id_article"];
     }
 }
-
+require_once("../Model/homeModel");
+recup($_SESSION["id_article"]);
+$reach=$_SESSION['request']->fetch();
+if($reach){
+    $_SESSION['nom_image']=$reach["nom_image"];
+    $_SESSION["soustitre"]=$reach["soustitre"];
+    $_SESSION["titre"]=$reach["titre"];
+    $_SESSION["contenu"]=$reach["contenu"];
+    $_SESSION["date"]=$reach["date_article"];
+}
 require_once('../View/acceuil.php');

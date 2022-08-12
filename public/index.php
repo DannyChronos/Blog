@@ -13,7 +13,7 @@
         require_once('../View/index.php');
     }
     elseif ($requete=='/home') {
-        require_once('../View/acceuil.php');
+        require_once('../Controller/homeController');
     }
     elseif ($requete=='/post') {
         require_once('../View/post.php');

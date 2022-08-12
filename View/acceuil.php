@@ -34,59 +34,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-lg-8">    
-                <?php
-                  if(isset($_POST['button'])){
-                     session_start();
-                    $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
-                    $request_1=$database->query("select * from article where id='".$_SESSION['identify']."' order by id_article desc");
-                    
-                    while($art=$request_1->fetch()) {
-                        $_SESSION['title']=$art["titre"];
-                        $_SESSION['subtitle']=$art['soustitre'];
-                ?>
-                    <div class="post-preview" style="font-family: Lora, sans-serif;">
-                        <h2 class="post-title"><?=($art["titre"])?></h2>
-                        <h4 class="post-subtitle"><?=($art["soustitre"])?></h4>
-                    <p class="post-meta">Posted by <?= $_SESSION['user']?> ;Start on <?=($art["date_article"])?></p>
-                </div>
-                <form action="" method="post">
-                 <div class="btn-group" role="group" style="width: 200px;">
-                    <button class="btn btn-primary buton1" type="submit" style="background-color: blue;height:50px;" name="bouton1">Voir+</button>
-                    <button class="btn btn-primary buton1" type="submit" style="margin-left: 10%;background-color: green;height:50px;" name="bouton2">Modifier</button>
-                    <button class="btn btn-primary buton1" type="submit" style="margin-left: 10%;background-color: red;height:50px;" name="bouton3">Supprimer</button>
-                </div>
-                </form>
-                <hr>
-                <?php 
-                }
-                $count++;
-                array_push($tab,$count);
-                $_SESSION['tab']=$tab;
-                }
-                elseif (!isset($_POST['button'])) {
-                     $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
-                    $request_1=$database->query("select * from article where id='".$_SESSION['identify']."' order by id_article desc");
-                    while($art=$request_1->fetch()) {
-                        $_SESSION['title']=$art["titre"];
-                        $_SESSION['subtitle']=$art['soustitre'];
-                ?>
-                    <div class="post-preview" style="font-family: Lora, sans-serif;">
-                        <h2 class="post-title"><?=($art["titre"])?></h2>
-                        <h4 class="post-subtitle"><?=($art["soustitre"])?></h4>
-                    <p class="post-meta">Posted by <?= $_SESSION['user']?> ;Start on <?=($art["date_article"])?></p>
-                </div>
-                <form action="" method="post">
-                 <div class="btn-group" role="group" style="width: 200px;">
-                    <button class="btn btn-primary buton1" type="submit" style="background-color: blue;height:50px;" name="bouton1">Voir+</button>
-                    <button class="btn btn-primary buton1" type="submit" style="margin-left: 10%;background-color: green;height:50px;" name="bouton2">Modifier</button>
-                    <button class="btn btn-primary buton1" type="submit" style="margin-left: 10%;background-color: red;height:50px;" name="bouton3">Supprimer</button>
-                </div>
-                </form>
-                <hr>
-                <?php 
-                }
-                }
-                ?>
+                <?php require_once("../Controller/affichelisteController");?>
             </div>
             
         </div>

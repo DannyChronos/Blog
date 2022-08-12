@@ -1,7 +1,16 @@
 <?php
 function home($titre,$soustitre,$contenu,$nomimage,$date,$user_id){
-    $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
-$request=$database->prepare("insert into article(titre,soustitre,contenu,nom_image,date_article,id) values(?,?,?,?,?,?)");
-
+    $db=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
+$request=$db->prepare("insert into article(titre,soustitre,contenu,nom_image,date_article,id) values(?,?,?,?,?,?)");
 $request->execute([$titre,$soustitre,$contenu,$nomimage,$date,$user_id]);
+}
+function affiche($me){
+    $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
+    $request_1=$database->query("select * from article where id='".$me."' order by id_article desc");
+    $_SESSION["recieve"]=$request_1;
+}
+function recup($id){
+    $database=new PDO("mysql:host=localhost;dbname=data_db","dayanechronos","#cortana4002");
+    $_SESSION["request"]=$database->query("select * from article where id_article='".$id."'");
+    
 }
